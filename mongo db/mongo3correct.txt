@@ -1,0 +1,47 @@
+> use Employee
+switched to db Employee
+> db.createCollection("db_employee")
+{ "ok" : 1 }
+>  db.db_employee.insert([{"emp_name":"sharath","designation":"sales","salary":15000},{"emp_name":"shyam","designation":"manager","salary":50000},{"emp_name":"Abraham","designation":"superwiser","salary":35000},{"emp_name":"muhammed","designation":"sales","salary":15000},{"emp_name":"Rohith","designation":"sales","salary":20000},{"emp_name":"Nirmal","designation":"driver","salary":20000},{"emp_name":"samuel","designation":"superwiser","salary":35000},{"emp_name":"john","designation":"sales","salary":15000}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 8,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.db_employee.find({})
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c85"), "emp_name" : "sharath", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c86"), "emp_name" : "shyam", "designation" : "manager", "salary" : 50000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c87"), "emp_name" : "Abraham", "designation" : "superwiser", "salary" : 35000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c88"), "emp_name" : "muhammed", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c89"), "emp_name" : "Rohith", "designation" : "sales", "salary" : 20000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8a"), "emp_name" : "Nirmal", "designation" : "driver", "salary" : 20000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8b"), "emp_name" : "samuel", "designation" : "superwiser", "salary" : 35000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8c"), "emp_name" : "john", "designation" : "sales", "salary" : 15000 }
+> db.db_employee.find({"salary":{$gt:15000},"designation":"superwiser"})
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c87"), "emp_name" : "Abraham", "designation" : "superwiser", "salary" : 35000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8b"), "emp_name" : "samuel", "designation" : "superwiser", "salary" : 35000 }
+>
+> db.db_employee.find({"designation":"sales"})
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c85"), "emp_name" : "sharath", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c88"), "emp_name" : "muhammed", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c89"), "emp_name" : "Rohith", "designation" : "sales", "salary" : 20000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8c"), "emp_name" : "john", "designation" : "sales", "salary" : 15000 }
+>
+> db.db_employee.update({"emp_name":"sharath"},{$set:{"emp_name":"jamsheer"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.db_employee.find({})
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c85"), "emp_name" : "jamsheer", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c86"), "emp_name" : "shyam", "designation" : "manager", "salary" : 50000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c87"), "emp_name" : "Abraham", "designation" : "superwiser", "salary" : 35000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c88"), "emp_name" : "muhammed", "designation" : "sales", "salary" : 15000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c89"), "emp_name" : "Rohith", "designation" : "sales", "salary" : 20000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8a"), "emp_name" : "Nirmal", "designation" : "driver", "salary" : 20000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8b"), "emp_name" : "samuel", "designation" : "superwiser", "salary" : 35000 }
+{ "_id" : ObjectId("614cbf58a80d1e8e8b656c8c"), "emp_name" : "john", "designation" : "sales", "salary" : 15000 }
+>> db.db_employee.aggregate([{$group:{_id:"$sales","totalsalary":{$sum:"$salary"}}}])
+{ "_id" : null, "totalsalary" : 205000 }
