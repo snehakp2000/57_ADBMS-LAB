@@ -1,0 +1,93 @@
+> use myclass
+switched to db myclass
+> db.createCollection("db_student")
+{ "ok" : 1 }
+> db.db_student.insert([{"student_name":"sneha","student_rollno":12,"mark":[{"ANC":78},{"ADBMS":89}]},{"student_name":"devu","student_rollno":23,"mark":[{"ANC":71},{"ADBMS":81}]},{"student_name":"arnav","student_rollno":16,"mark":[{"ANC":78},{"ADBMS":84}]},{"student_name":"dinha","student_rollno":22,"mark":[{"ANC":83},{"ADBMS":85}]},{"student_name":"dalwin","student_rollno":19,"mark":[{"ANC":74},{"ADBMS":81}]},{"student_name":"druvan","student_rollno":54,"mark":[{"ANC":68},{"ADBMS":56}]},{"student_name":"diya","student_rollno":3,"mark":[{"ANC":75},{"ADBMS":82}]},{"student_name":"arya","student_rollno":10,"mark":[{"ANC":88},{"ADBMS":99}]},{"student_name":"arun s","student_rollno":2,"mark":[{"ANC":71},{"ADBMS":82}]},{"student_name":"neha","student_rollno":11,"mark":[{"ANC":70},{"ADBMS":80}]}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.db_student.find()
+{ "_id" : ObjectId("614cacaa753ceeb06a745305"), "student_name" : "sneha", "student_rollno" : 12, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745306"), "student_name" : "devu", "student_rollno" : 23, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745307"), "student_name" : "arnav", "student_rollno" : 16, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 84 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745308"), "student_name" : "dinha", "student_rollno" : 22, "mark" : [ { "ANC" : 83 }, { "ADBMS" : 85 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745309"), "student_name" : "dalwin", "student_rollno" : 19, "mark" : [ { "ANC" : 74 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530a"), "student_name" : "druvan", "student_rollno" : 54, "mark" : [ { "ANC" : 68 }, { "ADBMS" : 56 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530b"), "student_name" : "diya", "student_rollno" : 3, "mark" : [ { "ANC" : 75 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530c"), "student_name" : "arya", "student_rollno" : 10, "mark" : [ { "ANC" : 88 }, { "ADBMS" : 99 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530d"), "student_name" : "arun s", "student_rollno" : 2, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530e"), "student_name" : "neha", "student_rollno" : 11, "mark" : [ { "ANC" : 70 }, { "ADBMS" : 80 } ] }
+>  db.db_student.updateOne({"student_roll":54},{$set:{"mark":[{"oop":67},{"ANC":89}]}})
+{ "acknowledged" : true, "matchedCount" : 0, "modifiedCount" : 0 }
+> db.db_student.find()
+{ "_id" : ObjectId("614cacaa753ceeb06a745305"), "student_name" : "sneha", "student_rollno" : 12, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745306"), "student_name" : "devu", "student_rollno" : 23, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745307"), "student_name" : "arnav", "student_rollno" : 16, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 84 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745308"), "student_name" : "dinha", "student_rollno" : 22, "mark" : [ { "ANC" : 83 }, { "ADBMS" : 85 } ] }
+> db.db_student.insert([{"student_name":"sneha","student_rollno":12,"mark":[{"ANC":78},{"ADBMS":89}]},{"student_name":"devu","student_rollno":23,"mark":[{"ANC":71},{"ADBMS":81}]},{"student_name":"arnav","student_rollno":16,"mark":[{"ANC":78},{"ADBMS":84}]},{"student_name":"dinha","student_rollno":22,"mark":[{"ANC":83},{"ADBMS":85}]},{"student_name":"dalwin","student_rollno":19,"mark":[{"ANC":74},{"ADBMS":81}]},{"student_name":"druvan","student_rollno":54,"mark":[{"ANC":68},{"ADBMS":56}]},{"student_name":"diya","student_rollno":3,"mark":[{"ANC":75},{"ADBMS":82}]},{"student_name":"arya","student_rollno":10,"mark":[{"ANC":88},{"ADBMS":99}]},{"student_name":"arun s","student_rollno":2,"mark":[{"ANC":71},{"ADBMS":82}]},{"student_name":"neha","student_rollno":11,"mark":[{"ANC":70},{"ADBMS":80}]}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 10,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+> db.db_student.find()
+{ "_id" : ObjectId("614cacaa753ceeb06a745305"), "student_name" : "sneha", "student_rollno" : 12, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745306"), "student_name" : "devu", "student_rollno" : 23, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745307"), "student_name" : "arnav", "student_rollno" : 16, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 84 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745308"), "student_name" : "dinha", "student_rollno" : 22, "mark" : [ { "ANC" : 83 }, { "ADBMS" : 85 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745309"), "student_name" : "dalwin", "student_rollno" : 19, "mark" : [ { "ANC" : 74 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530a"), "student_name" : "druvan", "student_rollno" : 54, "mark" : [ { "ANC" : 68 }, { "ADBMS" : 56 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530b"), "student_name" : "diya", "student_rollno" : 3, "mark" : [ { "ANC" : 75 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530c"), "student_name" : "arya", "student_rollno" : 10, "mark" : [ { "ANC" : 88 }, { "ADBMS" : 99 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530d"), "student_name" : "arun s", "student_rollno" : 2, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530e"), "student_name" : "neha", "student_rollno" : 11, "mark" : [ { "ANC" : 70 }, { "ADBMS" : 80 } ] }
+> db.db_student.updateOne({student_rollno:54},{$set:{mark:[{"oop":67},{"ANC":89}]}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.db_student.find()
+{ "_id" : ObjectId("614cacaa753ceeb06a745305"), "student_name" : "sneha", "student_rollno" : 12, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745306"), "student_name" : "devu", "student_rollno" : 23, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745307"), "student_name" : "arnav", "student_rollno" : 16, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 84 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745308"), "student_name" : "dinha", "student_rollno" : 22, "mark" : [ { "ANC" : 83 }, { "ADBMS" : 85 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745309"), "student_name" : "dalwin", "student_rollno" : 19, "mark" : [ { "ANC" : 74 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530a"), "student_name" : "druvan", "student_rollno" : 54, "mark" : [ { "oop" : 67 }, { "ANC" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530b"), "student_name" : "diya", "student_rollno" : 3, "mark" : [ { "ANC" : 75 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530c"), "student_name" : "arya", "student_rollno" : 10, "mark" : [ { "ANC" : 88 }, { "ADBMS" : 99 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530d"), "student_name" : "arun s", "student_rollno" : 2, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530e"), "student_name" : "neha", "student_rollno" : 11, "mark" : [ { "ANC" : 70 },{"ADBMS":80 } ] }
+> db.db_student.findOneAndDelete({})
+{
+        "_id" : ObjectId("614cacaa753ceeb06a745305"),
+        "student_name" : "sneha",
+        "student_rollno" : 12,
+        "mark" : [
+                {
+                        "ANC" : 78
+                },
+                {
+                        "ADBMS" : 89
+                }
+        ]
+}
+> db.db_student.find()
+{ "_id" : ObjectId("614cacaa753ceeb06a745306"), "student_name" : "devu", "student_rollno" : 23, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745307"), "student_name" : "arnav", "student_rollno" : 16, "mark" : [ { "ANC" : 78 }, { "ADBMS" : 84 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745308"), "student_name" : "dinha", "student_rollno" : 22, "mark" : [ { "ANC" : 83 }, { "ADBMS" : 85 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a745309"), "student_name" : "dalwin", "student_rollno" : 19, "mark" : [ { "ANC" : 74 }, { "ADBMS" : 81 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530a"), "student_name" : "druvan", "student_rollno" : 54, "mark" : [ { "oop" : 67 }, { "ANC" : 89 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530b"), "student_name" : "diya", "student_rollno" : 3, "mark" : [ { "ANC" : 75 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530c"), "student_name" : "arya", "student_rollno" : 10, "mark" : [ { "ANC" : 88 }, { "ADBMS" : 99 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530d"), "student_name" : "arun s", "student_rollno" : 2, "mark" : [ { "ANC" : 71 }, { "ADBMS" : 82 } ] }
+{ "_id" : ObjectId("614cacaa753ceeb06a74530e"), "student_name" : "neha", "student_rollno" : 11, "mark" : [ { "ANC" : 70 }, { "ADBMS" : 80 } ] }
+>
